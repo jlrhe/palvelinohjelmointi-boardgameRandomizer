@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>GameList</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0 shrink-to-fit=no"/>
+	<meta name="description" content="Boardgame randomizer"/>
+	<meta name="author" content="Jan Heikel">
+	<meta name="keywords" content="board game, board games, games, gaming, geek, bgg, boardgamegeek">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" th:href="@{https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css}" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"/>
+</head>
+<body>
+	<h1>Games</h1>
+	<table  class="table table-striped">
+		<tbody>
+			<tr>
+				<th>Game name</th>
+				<th>Game ID</th>
+			</tr>
+			<tr th:each = "game : ${games}">
+				<td th:text="${game.name}"></td>
+				<td th:text="${game.gameId}"></td>
+			</tr>
+		</tbody>
+	</table>
+</body>
+</html>
