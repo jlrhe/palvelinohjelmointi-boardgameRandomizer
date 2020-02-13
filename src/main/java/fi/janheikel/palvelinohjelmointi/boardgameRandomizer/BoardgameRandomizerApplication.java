@@ -17,7 +17,7 @@ public class BoardgameRandomizerApplication {
 		SpringApplication.run(BoardgameRandomizerApplication.class, args);
 	}
 	
-	
+	/*
 	@Bean
 	public CommandLineRunner demo1(UserRepository repository) {
 		return (args) -> {
@@ -42,5 +42,5 @@ public class BoardgameRandomizerApplication {
 			repository.save(game2); 
 			repository.save(game3);
 		};
-	}
+	}*/
 }
