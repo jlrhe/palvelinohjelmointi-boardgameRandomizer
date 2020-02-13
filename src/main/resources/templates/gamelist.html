@@ -7,19 +7,27 @@
 	<meta name="description" content="Boardgame randomizer"/>
 	<meta name="author" content="Jan Heikel">
 	<meta name="keywords" content="board game, board games, games, gaming, geek, bgg, boardgamegeek">
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" th:href="@{https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css}" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"/>
+	<link rel="stylesheet" href="css/bootstrap.min.css" th:href="@{css/bootstrap.min.css}" />
 </head>
 <body>
 	<h1>Games</h1>
 	<table  class="table table-striped">
 		<tbody>
 			<tr>
-				<th>Game name</th>
 				<th>Game ID</th>
+				<th>Game name</th>
+				<th>Players min</th>
+				<th>Players max</th>
+				<th>Playing time (minutes)</th>
+				<th>Year published</th>
 			</tr>
 			<tr th:each = "game : ${games}">
-				<td th:text="${game.name}"></td>
 				<td th:text="${game.gameId}"></td>
+				<td th:text="${game.name}"></td>
+				<td th:text="${game.minPlayers}"></td>
+				<td th:text="${game.maxPlayers}"></td>
+				<td th:text="${game.playingTime}"></td>
+				<td th:text="${game.yearPublished}"></td>
 			</tr>
 		</tbody>
 	</table>

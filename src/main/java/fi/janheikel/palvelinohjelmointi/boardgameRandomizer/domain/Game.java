@@ -12,36 +12,43 @@ public class Game {
 	private long gameId;
 	private String name;
 	
-	/*
-	private String image;
-	private String thumbnail;
+	
+	private String imageUrl;
+	private String thumbnailUrl;
 	private int minPlayers;
 	private int maxPlayers;
 	private int playingTime;
 	private boolean isExpansion;
 	private int yearPublished;
-	*/
+	
 	
 	public Game() {}
 	
 	public Game(String name) {
 		super();
 		this.name = name;
+		this.imageUrl = "";
+		this.thumbnailUrl = "";
+		this.minPlayers = 0;
+		this.maxPlayers = 99;
+		this.playingTime = 0;
+		this.isExpansion = false;
+		this.yearPublished = 0;
 	}
-	/*
-	public Game(String name, String image, String thumbnail, int minPlayers, int maxPlayers, int playingTime,
+	
+	public Game(String name, String imageUrl, String thumbnailUrl, int minPlayers, int maxPlayers, int playingTime,
 			boolean isExpansion, int yearPublished) {
 		super();
 		this.name = name;
-		this.image = image;
-		this.thumbnail = thumbnail;
+		this.imageUrl = imageUrl;
+		this.thumbnailUrl = thumbnailUrl;
 		this.minPlayers = minPlayers;
 		this.maxPlayers = maxPlayers;
 		this.playingTime = playingTime;
 		this.isExpansion = isExpansion;
 		this.yearPublished = yearPublished;
 	}
-	*/
+	
 	public long getGameId() {
 		return gameId;
 	}
@@ -52,18 +59,18 @@ public class Game {
 	public void setName(String name) {
 		this.name = name;
 	}
-	/*
+	
 	public String getImage() {
-		return image;
+		return imageUrl;
 	}
 	public void setImage(String image) {
-		this.image = image;
+		this.imageUrl = image;
 	}
 	public String getThumbnail() {
-		return thumbnail;
+		return thumbnailUrl;
 	}
 	public void setThumbnail(String thumbnail) {
-		this.thumbnail = thumbnail;
+		this.thumbnailUrl = thumbnail;
 	}
 	public int getMinPlayers() {
 		return minPlayers;
@@ -95,5 +102,5 @@ public class Game {
 	public void setYearPublished(int yearPublished) {
 		this.yearPublished = yearPublished;
 	}
-	*/
+	
 }

@@ -17,8 +17,8 @@ public class BoardgameRandomizerApplication {
 		SpringApplication.run(BoardgameRandomizerApplication.class, args);
 	}
 	
-	/*
-	 * @Bean
+	
+	@Bean
 	public CommandLineRunner demo1(UserRepository repository) {
 		return (args) -> {
 			User user1 = new User("Test1", "test1@test.fi");
@@ -30,7 +30,7 @@ public class BoardgameRandomizerApplication {
 			repository.save(user3);
 		};
 	}
-	*/
+	
 	@Bean
 	public CommandLineRunner demo2(GameRepository repository) {
 		return (args) -> {
