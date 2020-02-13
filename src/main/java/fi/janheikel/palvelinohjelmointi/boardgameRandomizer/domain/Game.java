@@ -1,9 +1,13 @@
 package fi.janheikel.palvelinohjelmointi.boardgameRandomizer.domain;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Game {
@@ -11,8 +15,6 @@ public class Game {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private long gameId;
 	private String name;
-	
-	
 	//private String imageUrl;
 	//private String thumbnailUrl;
 	private int minPlayers;
@@ -21,7 +23,18 @@ public class Game {
 	private boolean isExpansion;
 	private int yearPublished;
 	
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "game")
+	private List<UserGame> gameusers;
 	
+	
+	public List<UserGame> getGameusers() {
+		return gameusers;
+	}
+
+	public void setGameusers(List<UserGame> gameusers) {
+		this.gameusers = gameusers;
+	}
+
 	public Game() {
 		super();
 		this.name = "name";
