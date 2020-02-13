@@ -13,8 +13,8 @@ public class Game {
 	private String name;
 	
 	
-	private String imageUrl;
-	private String thumbnailUrl;
+	//private String imageUrl;
+	//private String thumbnailUrl;
 	private int minPlayers;
 	private int maxPlayers;
 	private int playingTime;
@@ -22,13 +22,23 @@ public class Game {
 	private int yearPublished;
 	
 	
-	public Game() {}
+	public Game() {
+		super();
+		this.name = "name";
+		//this.imageUrl = "";
+		//this.thumbnailUrl = "";
+		this.minPlayers = 0;
+		this.maxPlayers = 99;
+		this.playingTime = 0;
+		this.isExpansion = false;
+		this.yearPublished = 0;
+	}
 	
 	public Game(String name) {
 		super();
 		this.name = name;
-		this.imageUrl = "";
-		this.thumbnailUrl = "";
+		//this.imageUrl = "";
+		//this.thumbnailUrl = "";
 		this.minPlayers = 0;
 		this.maxPlayers = 99;
 		this.playingTime = 0;
@@ -40,8 +50,8 @@ public class Game {
 			boolean isExpansion, int yearPublished) {
 		super();
 		this.name = name;
-		this.imageUrl = imageUrl;
-		this.thumbnailUrl = thumbnailUrl;
+		//this.imageUrl = imageUrl;
+		//this.thumbnailUrl = thumbnailUrl;
 		this.minPlayers = minPlayers;
 		this.maxPlayers = maxPlayers;
 		this.playingTime = playingTime;
@@ -52,7 +62,9 @@ public class Game {
 	public long getGameId() {
 		return gameId;
 	}
-	
+	public void setGameId(long gameId) {
+		this.gameId=gameId;
+	}
 	public String getName() {
 		return name;
 	}
@@ -60,6 +72,7 @@ public class Game {
 		this.name = name;
 	}
 	
+	/*
 	public String getImage() {
 		return imageUrl;
 	}
@@ -72,6 +85,7 @@ public class Game {
 	public void setThumbnail(String thumbnail) {
 		this.thumbnailUrl = thumbnail;
 	}
+	*/
 	public int getMinPlayers() {
 		return minPlayers;
 	}
@@ -91,10 +105,13 @@ public class Game {
 		this.playingTime = playingTime;
 	}
 	public boolean isExpansion() {
-		return isExpansion;
+		return this.isExpansion;
 	}
-	public void setExpansion(boolean isExpansion) {
+	public void setIsExpansion(boolean isExpansion) {
 		this.isExpansion = isExpansion;
+	}
+	public boolean getIsExpansion() {
+		return this.isExpansion;
 	}
 	public int getYearPublished() {
 		return yearPublished;

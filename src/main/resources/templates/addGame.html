@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>GameList</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0 shrink-to-fit=no"/>
+	<meta name="description" content="Boardgame randomizer"/>
+	<meta name="author" content="Jan Heikel">
+	<meta name="keywords" content="board game, board games, games, gaming, geek, bgg, boardgamegeek">
+	<link rel="stylesheet" href="css/bootstrap.min.css" th:href="@{css/bootstrap.min.css}" />
+</head>
+<body>
+	<div class="container text-center">
+		<h1>Add a Game to your collection</h1>
+		<p class="text-muted">Leave the fields you don't want to fill as their defaults (no empty fields), I can't be arsed to overload the constructor with all the possibilities.</p>
+		<form class="text-left" th:object="${game}" th:action="@{savegame}" action="#" method="post"><!-- TODO: add validation and aria-stuff -->
+			<div class="form-group">
+				<label for="gameName">Game Name</label>
+				<input type="text" class="form-control" id="gameName" th:field="*{name}" value="name"/>
+				<small id="namingHelp" class="form-text text-muted"><!-- TODO: Instructions on expansion naming to be compatible with bgg naming convention-->Name your expansions according to BGG naming convention</small>
+			</div>
+			<div class="form-group">
+				<label for="minPlayers">Minimun amount of players</label>
+				<input type="number" class="form-control" id="minPlayers" th:field="*{minPlayers}" value="0"/>
+			</div>
+			<div class="form-group">
+				<label for="maxPlayers">Maximum amount of players</label>
+				<input type="number" class="form-control" id="maxPlayers" th:field="*{maxPlayers}" value="99"/>
+			</div>
+			<div class="form-group">
+				<label for="playingTime">Approximate playing time in minutes</label>
+				<input type="number" class="form-control" id="playingTime" th:field="*{playingTime}" value="0"/>
+			</div>
+			<div class="form-group">
+				<label for="yearPublished">Year the game was published</label>
+				<input type="number" class="form-control" id="yearPublished" th:field="*{yearPublished}" value="0"/>
+			</div>
+			<div class="form-check mb-2">
+				<input type="checkbox" class="form-check-input" id="isExpansion" th:field="*{isExpansion}"/>
+				<label class="form-check-label" for="isExpansion" th:for="${#ids.next('isExpansion')}">This is an Expansion.</label>
+			</div>
+			<button type="submit" class="btn btn-primary">Add Game</button>
+		</form>
+	</div>
+</body>
+</html>
