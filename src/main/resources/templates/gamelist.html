@@ -12,33 +12,38 @@
 <body>
 	<div class="container text-center">
 		<h1>Games</h1>
-		<a href="/addgame" class="btn btn-success btn-lg border border-dark mb-2 font-weight-bold">Add a game</a>
-		<table  class="table table-striped">
-			<tbody>
-				<tr>
-					<th>Game ID</th>
-					<th>Game name</th>
-					<th>Players min</th>
-					<th>Players max</th>
-					<th>Playing time (minutes)</th>
-					<th>Year published</th>
-					<th>Expansion or Main game</th>
-					<th>Edit game</th>
-					<th>Remove game</th>
-				</tr>
-				<tr th:each = "game : ${games}">
-					<td th:text="${game.gameId}"></td>
-					<td th:text="${game.name}"></td>
-					<td th:text="${game.minPlayers}"></td>
-					<td th:text="${game.maxPlayers}"></td>
-					<td th:text="${game.playingTime}"></td>
-					<td th:text="${game.yearPublished}"></td>
-					<td th:text="${game.isExpansion()} ? 'Expansion' : 'Main Game'" />
-					<td><a th:href="@{/editgame/{id}(id=${game.gameId})}" class="btn btn-info border border-dark font-weight-bold">Edit</a></td>
-					<td><a class="btn btn-danger border border-dark font-weight-bold" th:href="@{/delete/{id}(id=${game.gameId})}">Delete</a></td>
-				</tr>
-			</tbody>
-		</table>
+		<a href="/addgame" class="btn btn-success btn-lg border border-dark mb-2 font-weight-bold">Add a Game</a>
+		<div class="table-responsive-md">
+			<table  class="table table-bordered table-sm">
+				<thead class="thead-dark">
+					<tr class="align-middle">
+						<th class="align-middle">Game ID</th>
+						<th class="align-middle">Game Name</th>
+						<th class="align-middle">Players min</th>
+						<th class="align-middle">Players max</th>
+						<th class="align-middle">Playing Time (minutes)</th>
+						<th class="align-middle">Year Published</th>
+						<th class="align-middle">Expansion or Main Game</th>
+						<th class="align-middle">Edit Game</th>
+						<th class="align-middle">Remove Game</th>
+					</tr>
+				</thead>
+				<tbody>
+					
+					<tr th:each = "game : ${games}">
+						<td class="align-middle" th:text="${game.gameId}"></td>
+						<td class="align-middle" th:text="${game.name}"></td>
+						<td class="align-middle" th:text="${game.minPlayers}"></td>
+						<td class="align-middle" th:text="${game.maxPlayers}"></td>
+						<td class="align-middle" th:text="${game.playingTime}"></td>
+						<td class="align-middle" th:text="${game.yearPublished}"></td>
+						<td class="align-middle" th:text="${game.isExpansion()} ? 'Expansion' : 'Main Game'" />
+						<td class="align-middle"><a th:href="@{/editgame/{id}(id=${game.gameId})}" class="btn btn-info border border-dark font-weight-bold">Edit</a></td>
+						<td class="align-middle"><a class="btn btn-danger border border-dark font-weight-bold" th:href="@{/delete/{id}(id=${game.gameId})}">Delete</a></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
 	</div>
 </body>
 </html>
