@@ -7,7 +7,7 @@
 	<meta name="description" content="Boardgame randomizer"/>
 	<meta name="author" content="Jan Heikel">
 	<meta name="keywords" content="board game, board games, games, gaming, geek, bgg, boardgamegeek">
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+	<link rel="stylesheet" href="~/css/bootstrap.min.css" th:href="@{~/css/bootstrap.min.css}" />
 </head>
 <body>
 	<div class="container text-center">
@@ -16,23 +16,28 @@
 			<div class="form-group">
 				<label for="gameName">Game Name</label>
 				<input type="text" class="form-control" id="gameName" th:field="*{name}" value="${game.name}"/>
-				<small id="namingHelp" class="form-text text-muted"><!-- TODO: Instructions on expansion naming to be compatible with bgg naming convention-->Name your expansions according to BGG naming convention</small>
+				<small class="form-text text-danger" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name Error</small>
+				<small id="namingHelp" class="form-text text-muted">Expansion naming = nameOfParentGame: nameOfExpansion. For translated games add two letter <a href="https://www.w3schools.com/tags/ref_language_codes.asp">languagecode</a> to the end of the name.</small>
 			</div>
 			<div class="form-group">
 				<label for="minPlayers">Minimun amount of players</label>
 				<input type="number" class="form-control" id="minPlayers" th:field="*{minPlayers}" value="${game.minPlayers}"/>
+				<small class="form-text text-danger" th:if="${#fields.hasErrors('minPlayers')}" th:errors="*{minPlayers}">MinPlayer Error</small>
 			</div>
 			<div class="form-group">
 				<label for="maxPlayers">Maximum amount of players</label>
 				<input type="number" class="form-control" id="maxPlayers" th:field="*{maxPlayers}" value="${game.maxPlayers}"/>
+				<small class="form-text text-danger" th:if="${#fields.hasErrors('maxPlayers')}" th:errors="*{maxPlayers}">maxPlayers Error</small>
 			</div>
 			<div class="form-group">
 				<label for="playingTime">Approximate playing time in minutes</label>
 				<input type="number" class="form-control" id="playingTime" th:field="*{playingTime}" value="${game.playingTime}"/>
+				<small class="form-text text-danger" th:if="${#fields.hasErrors('playingTime')}" th:errors="*{playingTime}">playingTime Error</small>
 			</div>
 			<div class="form-group">
 				<label for="yearPublished">Year the game was published</label>
 				<input type="number" class="form-control" id="yearPublished" th:field="*{yearPublished}" value="${game.yearPublished}"/>
+				<small class="form-text text-danger" th:if="${#fields.hasErrors('yearPublished')}" th:errors="*{yearPublished}">yearPublished Error</small>
 			</div>
 			<div class="form-check mb-2">
 				<input type="checkbox" class="form-check-input" id="isExpansion" th:field="*{isExpansion}" th:value="${isExpansion}"/>
@@ -43,10 +48,6 @@
 				<input disabled type="number" class="form-control" id="gameId" th:field="*{gameId}" value="${game.gameId}"/>
 			</div>
 			<button type="submit" class="btn btn-primary">Save Game</button>
-			<!-- debugging -->
-			<p th:text="${gameId}"></p>
-			
-			
 		</form>
 	</div>
 </body>

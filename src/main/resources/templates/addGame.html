@@ -17,29 +17,35 @@
 			<div class="form-group">
 				<label for="gameName">Game Name</label>
 				<input type="text" class="form-control" id="gameName" th:field="*{name}" value="name"/>
-				<small id="namingHelp" class="form-text text-muted">Expansion naming = nameOfParentGame: nameOfExpansion. For translated games add two letter <a href="https://www.w3schools.com/tags/ref_language_codes.asp">languagecodecode</a> to the end of the name.</small>
+				<small class="form-text text-danger" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name Error</small>
+				<small id="namingHelp" class="form-text text-muted">Expansion naming = nameOfParentGame: nameOfExpansion. For translated games add two letter <a href="https://www.w3schools.com/tags/ref_language_codes.asp">languagecode</a> to the end of the name.</small>
 			</div>
 			<div class="form-group">
-				<label for="minPlayers">Minimun amount of players</label>
+				<label for="minPlayers">Minimum amount of players (0 for unknown)</label>
 				<input type="number" class="form-control" id="minPlayers" th:field="*{minPlayers}" value="0"/>
+				<small class="form-text text-danger" th:if="${#fields.hasErrors('minPlayers')}" th:errors="*{minPlayers}">MinPlayer Error</small>
 			</div>
 			<div class="form-group">
-				<label for="maxPlayers">Maximum amount of players</label>
+				<label for="maxPlayers">Maximum amount of players (0 for unknown)</label>
 				<input type="number" class="form-control" id="maxPlayers" th:field="*{maxPlayers}" value="99"/>
+				<small class="form-text text-danger" th:if="${#fields.hasErrors('maxPlayers')}" th:errors="*{maxPlayers}">maxPlayers Error</small>
 			</div>
 			<div class="form-group">
-				<label for="playingTime">Approximate playing time in minutes</label>
+				<label for="playingTime">Approximate playing time in minutes (0 for unknown)</label>
 				<input type="number" class="form-control" id="playingTime" th:field="*{playingTime}" value="0"/>
+				<small class="form-text text-danger" th:if="${#fields.hasErrors('playingTime')}" th:errors="*{playingTime}">playingTime Error</small>
 			</div>
 			<div class="form-group">
-				<label for="yearPublished">Year the game was published</label>
-				<input type="number" class="form-control" id="yearPublished" th:field="*{yearPublished}" value="0"/>
+				<label for="yearPublished">Year the game was published (9999 for unknown)</label>
+				<input type="number" class="form-control" id="yearPublished" th:field="*{yearPublished}" value="9999"/>
+				<small class="form-text text-danger" th:if="${#fields.hasErrors('yearPublished')}" th:errors="*{yearPublished}">yearPublished Error</small>
 			</div>
 			<div class="form-check mb-2">
 				<input type="checkbox" class="form-check-input" id="isExpansion" th:field="*{isExpansion}"/>
 				<label class="form-check-label" for="isExpansion" th:for="${#ids.next('isExpansion')}">This is an Expansion.</label>
 			</div>
-			<button type="submit" class="btn btn-primary">Add Game</button>
+			<button type="submit" class="btn btn-primary btn-lg border border-dark mb-2 font-weight-bold">Add Game</button>
+			<a href="/gamelist" class="btn btn-warning btn-lg border border-dark mb-2 font-weight-bold">Back</a>
 		</form>
 	</div>
 </body>

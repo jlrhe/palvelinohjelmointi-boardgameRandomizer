@@ -1,8 +1,11 @@
 package fi.janheikel.palvelinohjelmointi.boardgameRandomizer.web;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -36,13 +39,22 @@ public class GameController {
 	}
 	
 	@PostMapping("/savegame")
-	public String saveGame(Game game) {
+	public String saveGame(@Valid Game game, BindingResult bindingResult) {
+		if (bindingResult.hasErrors()) {
+			return "addGame";
+		}
+		
 		gameRepository.save(game);
 		return "redirect:gamelist";
 	}
 	
 	@PostMapping("/updategame/{gameId}")
-	public String updateGame(@PathVariable("gameId") long id, Game game, Model model) {
+	public String updateGame(@PathVariable("gameId") long id, @Valid Game game, BindingResult bindingResult, Model model) {
+		if (bindingResult.hasErrors()) {
+			game = gameRepository.findById(id).get();
+			model.addAttribute("game", game);
+			return "editgame";
+		}
 		gameRepository.save(game);
 		return "redirect:../gamelist";
 	}

@@ -8,19 +8,51 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 public class Game {
+	
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.AUTO) //when importing games from boardgamegeek(bgg)-database there is a risk of duplicate keys. I'll tackle this when/if I implement importing from bgg.
+	@NotNull
 	private long gameId;
+	
+	@Size(min=2, max=100)
+	@NotBlank
 	private String name;
+	
+	// image and thumbnail will most likely not be implemented as part of this course
 	//private String imageUrl;
 	//private String thumbnailUrl;
+	
+	//in the following a value of 0 denotes unknown
+	
+	@NotNull
+	@Min(0)
+	@Max(2147483647)//max just to prevent integer overflow, in theory there could be games with potentially limitless participant count 
 	private int minPlayers;
+	
+	@NotNull
+	@Min(0)
+	@Max(2147483647)//max just to prevent integer overflow, in theory there could be games with potentially limitless participant count 
 	private int maxPlayers;
+	
+	@NotNull
+	@Min(0)
+	@Max(2147483647)//max just to prevent integer overflow, in theory there could be games with potentially limitless participant count 
 	private int playingTime;
+	
+	@NotNull
 	private boolean isExpansion;
+	
+	@NotNull
+	@Min(-2147483648)
+	@Max(2147483647)//max just to prevent integer overflow, in theory there could be games with potentially limitless participant count 
 	private int yearPublished;
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "game")
